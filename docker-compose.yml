@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: isisens_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-isisens}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-isisens_secure_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-isisens_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - isisens_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-isisens} -d ${POSTGRES_DB:-isisens_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    container_name: isisens_backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-isisens}:${POSTGRES_PASSWORD:-isisens_secure_pass}@postgres:5432/${POSTGRES_DB:-isisens_db}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-change-me-in-production}
+      COLLECTOR_API_KEY: ${COLLECTOR_API_KEY:-change-me-collector-key}
+      KEY_VAULT_SECRET: ${KEY_VAULT_SECRET:-change-me-vault-secret}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: isisens_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    command: npm run dev -- --host 0.0.0.0
+
+volumes:
+  isisens_pgdata:
+

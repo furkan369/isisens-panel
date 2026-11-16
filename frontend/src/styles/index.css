@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --isisens-bg: #050B18;
+  --isisens-secondary: #0B1424;
+  --isisens-card: #122036;
+  --isisens-orange: #FF792D;
+  --isisens-cyan: #12D9E8;
+  --isisens-success: #20D58C;
+  --isisens-warning: #FFBD35;
+  --isisens-danger: #FF5050;
+  --isisens-text: #FFFFFF;
+  --isisens-muted: #AEBCCB;
+}
+
+body {
+  background-color: #050B18;
+  background-image:
+    radial-gradient(circle at 8% 92%, rgba(255, 121, 45, 0.14) 0%, transparent 28%),
+    radial-gradient(circle at 14% 96%, rgba(18, 217, 232, 0.14) 0%, transparent 32%),
+    radial-gradient(circle at 75% 18%, rgba(18, 217, 232, 0.06) 0%, transparent 38%),
+    linear-gradient(180deg, #050B18 0%, #071022 50%, #050B18 100%);
+  color: #FFFFFF;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  min-height: 100vh;
+}
+
+/* Glassmorphic Panel & Card Surfaces matching the reference visual */
+.isisens-glass-panel {
+  background: linear-gradient(180deg, rgba(11, 20, 36, 0.92) 0%, rgba(7, 14, 28, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+}
+
+.isisens-kpi-cyan {
+  background: linear-gradient(145deg, rgba(18, 32, 54, 0.9) 0%, rgba(8, 19, 36, 0.95) 65%, rgba(18, 217, 232, 0.14) 100%);
+  border: 1px solid rgba(18, 217, 232, 0.28);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), inset 0 0 22px rgba(18, 217, 232, 0.06);
+}
+
+.isisens-kpi-orange {
+  background: linear-gradient(145deg, rgba(18, 32, 54, 0.9) 0%, rgba(16, 18, 32, 0.95) 65%, rgba(255, 121, 45, 0.15) 100%);
+  border: 1px solid rgba(255, 121, 45, 0.28);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), inset 0 0 22px rgba(255, 121, 45, 0.06);
+}
+
+.isisens-kpi-red {
+  background: linear-gradient(145deg, rgba(24, 20, 36, 0.9) 0%, rgba(18, 14, 26, 0.95) 65%, rgba(255, 80, 80, 0.16) 100%);
+  border: 1px solid rgba(255, 80, 80, 0.32);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), inset 0 0 22px rgba(255, 80, 80, 0.07);
+}
+
+/* Active Sidebar Menu Item with Neon Orange Glow matching reference */
+.isisens-nav-active {
+  background: linear-gradient(90deg, rgba(255, 121, 45, 0.88) 0%, rgba(255, 121, 45, 0.38) 58%, rgba(255, 121, 45, 0.12) 100%);
+  border: 1px solid rgba(255, 148, 77, 0.85);
+  box-shadow: 0 0 22px rgba(255, 121, 45, 0.42), inset 0 1px 1px rgba(255, 210, 175, 0.45);
+}
+
+/* Active Site in Site Tree */
+.isisens-site-active {
+  background: linear-gradient(90deg, rgba(255, 121, 45, 0.24) 0%, rgba(255, 121, 45, 0.08) 100%);
+  border: 1px solid rgba(255, 121, 45, 0.65);
+  box-shadow: 0 0 15px rgba(255, 121, 45, 0.22);
+}
+
+/* Active Block in Site Tree */
+.isisens-block-active {
+  background: linear-gradient(90deg, rgba(18, 217, 232, 0.16) 0%, rgba(18, 217, 232, 0.04) 100%);
+  border: 1px solid rgba(18, 217, 232, 0.45);
+  box-shadow: 0 0 14px rgba(18, 217, 232, 0.18);
+}
+
+/* Active Sub-Tab in Site Detail */
+.isisens-tab-active {
+  background: linear-gradient(180deg, rgba(255, 121, 45, 0.04) 0%, rgba(255, 121, 45, 0.28) 100%);
+  border-bottom: 2px solid #FF792D;
+  box-shadow: 0 6px 16px -6px rgba(255, 121, 45, 0.55);
+}
+
+/* Orange Primary Action Button */
+.isisens-btn-orange {
+  background: linear-gradient(180deg, #FF9347 0%, #FF6B1A 100%);
+  border: 1px solid #FFA96B;
+  box-shadow: 0 0 18px rgba(255, 121, 45, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.isisens-btn-orange:hover {
+  background: linear-gradient(180deg, #FFA05C 0%, #FF792D 100%);
+  box-shadow: 0 0 24px rgba(255, 121, 45, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050B18;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C3152;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2C4C7E;
+}
+
